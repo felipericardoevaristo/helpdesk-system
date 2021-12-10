@@ -41,4 +41,10 @@ public class TecnicoResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();  /*uri e tipo o link de acesso ao objeto criado */
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO){
+        Tecnico obj = service.update(id, objDTO);
+        return ResponseEntity.ok().body(new TecnicoDTO(obj));
+    }
 }

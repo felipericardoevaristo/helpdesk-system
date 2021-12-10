@@ -18,6 +18,7 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.felipe.helpdesk.domain.enums.Perfil;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity  /*informa ao jpa que a classe Pessoa é uma entidade e que deseja que 
 seja criada uma tabela para ela no banco de dados*/
@@ -29,7 +30,8 @@ public abstract class Pessoa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	protected String nome;
-	
+
+	@CPF
 	@Column(unique = true)
 	protected String cpf;
 	
