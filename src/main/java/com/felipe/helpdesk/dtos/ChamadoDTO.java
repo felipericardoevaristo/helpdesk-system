@@ -9,6 +9,7 @@ import com.felipe.helpdesk.domain.enums.Status;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -20,11 +21,17 @@ public class ChamadoDTO implements Serializable {
     private LocalDate dataAbertura = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+    @NotNull(message = "O campo PRIORIDADES é requerido")
     private Integer prioridade;  /*quero so o codigo da prioridade*/
+    @NotNull(message = "O campo STATUS é requerido")
     private Integer status; /*quero so o codigo de status*/
+    @NotNull(message = "O campo TITULO é requerido")
     private String titulo;
+    @NotNull(message = "O campo OBSERVAÇÕES é requerido")
     private String observacoes;
+    @NotNull(message = "O campo TECNICO é requerido")
     private Integer tecnico; /*quero so o id de tecnico*/
+    @NotNull(message = "O campo CLIENTE é requerido")
     private Integer cliente; /*quero so o id de cliente*/
     private String nomeTecnico;
     private String nomeCliente;
